@@ -1,6 +1,13 @@
 # See: https://github.com/github/gitignore
 
 ##
+# Ansible
+#
+
+*.retry
+
+
+##
 # Python
 #
 
@@ -17,6 +24,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
 
 ##
 # Vagrant
