@@ -69,7 +69,7 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", inline: <<-SHELL
     # Install ansible via pip to set a fixed version
     sudo apt-get install -y python3-pip
-    sudo pip3 install -r /vagrant/ansible/requirements.txt
+    sudo pip3 install --upgrade --requirement /vagrant/ansible/requirements.txt
   SHELL
 
   # Use "ansible_local" provisoner to be in sync with playbooks and ansible version
@@ -78,5 +78,6 @@ Vagrant.configure(2) do |config|
         "127.0.0.1" => ["default"]
       }
     ansible.playbook = "/vagrant/ansible/development_common.yml"
+    ansible.extra_vars = { ansible_python_interpreter: "/usr/bin/python3" }
   end
 end
