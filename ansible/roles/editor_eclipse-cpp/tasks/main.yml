@@ -1,0 +1,6 @@
+---
+- block:
+  - import_tasks: check_eclipse-cpp.yml
+  - import_tasks: install_eclipse-cpp.yml
+    when: not ansible_check_mode
+    become: yes

@@ -1,0 +1,50 @@
+---
+# Install the JetBrains IntelliJ IDE.
+- name: Get IntelliJ installation directory status.
+  stat: path="{{ intellij_install_directory }}"
+  register: intellij_install_dir
+
+- name: Download IntelliJ.
+  block:
+  - name: Create IntelliJ download path.
+    file:
+      path: "{{ intellij_download_path }}"
+      state: directory
+      owner: root
+      group: root
+      mode: 0755
+  - name: Download IntelliJ.
+    get_url:
+      url: "https://download.jetbrains.com/idea/{{ intellij_download_archive }}"
+      dest: "{{ intellij_download_path }}/{{ intellij_download_archive }}"
+      owner: root
+      group: root
+      mode: 0644
+  - name: Get IntelliJ download status.
+    stat:
+      path: "{{ intellij_download_path }}/{{ intellij_download_archive }}"
+    register: intellij_download
+  when: not intellij_install_dir.stat.exists
+
+- name: Install IntelliJ.
+  block:
+  - name: Create IntelliJ installation directory.
+    file:
+        path: "{{ intellij_install_directory }}"
+        state: directory
+        owner: root
+        group: root
+        mode: 0755
+  - name: Extract IntelliJ.
+    unarchive:
+      src: "{{ intellij_download_path }}/{{ intellij_download_archive }}"
+      dest: "{{ intellij_install_directory }}"
+      extra_opts: [--strip-components=1]
+      copy: false
+  when: not intellij_install_dir.stat.exists
+
+- name: Delete IntelliJ download.
+  file:
+    path: "{{ intellij_download_path }}/{{ intellij_download_archive }}"
+    state: absent
+  when: not intellij_download_keep

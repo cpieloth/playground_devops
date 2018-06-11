@@ -1,0 +1,3 @@
+---
+intellij_install_directory: "{{ intellij_install_prefix }}/intellij-{{ intellij_edition }}-{{ intellij_version }}"
+intellij_download_archive: "ideaIC-{{ intellij_version }}.tar.gz"

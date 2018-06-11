@@ -1,0 +1,3 @@
+---
+pycharm_install_directory: "{{ pycharm_install_prefix }}/pycharm-{{ pycharm_edition }}-{{ pycharm_version }}"
+pycharm_download_archive: "pycharm-{{ pycharm_edition }}-{{ pycharm_version }}.tar.gz"

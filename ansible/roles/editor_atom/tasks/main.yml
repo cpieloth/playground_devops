@@ -1,0 +1,8 @@
+---
+# Install GitHub's Atom Editor.
+
+- name: Add repository 'ppa:webupd8team/atom'.
+  apt_repository: repo='ppa:webupd8team/atom'
+
+- name: Install Atom editor.
+  apt: name=atom state=present

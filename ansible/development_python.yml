@@ -1,0 +1,7 @@
+---
+# Playbook for python development workstation.
+- hosts: 127.0.0.1
+  connection: local
+  roles:
+    - development_python
+    - editor_pycharm

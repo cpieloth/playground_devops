@@ -1,0 +1,50 @@
+---
+# Install the JetBrains PyCharm IDE.
+- name: Get PyCharm installation directory status.
+  stat: path="{{ pycharm_install_directory }}"
+  register: pycharm_install_dir
+
+- name: Download PyCharm.
+  block:
+  - name: Create PyCharm download path.
+    file:
+      path: "{{ pycharm_download_path }}"
+      state: directory
+      owner: root
+      group: root
+      mode: 0755
+  - name: Download PyCharm.
+    get_url:
+      url: "http://download.jetbrains.com/python/{{ pycharm_download_archive }}"
+      dest: "{{ pycharm_download_path }}/{{ pycharm_download_archive }}"
+      owner: root
+      group: root
+      mode: 0644
+  - name: Get PyCharm download status.
+    stat:
+      path: "{{ pycharm_download_path }}/{{ pycharm_download_archive }}"
+    register: pycharm_download
+  when: not pycharm_install_dir.stat.exists
+
+- name: Install PyCharm.
+  block:
+  - name: Create PyCharm installation prefix directory.
+    file:
+        path: "{{ pycharm_install_prefix }}"
+        state: directory
+        owner: root
+        group: root
+        mode: 0755
+  - name: Extract PyCharm.
+    unarchive:
+      src: "{{ pycharm_download_path }}/{{ pycharm_download_archive }}"
+      dest: "{{ pycharm_install_prefix }}"
+      creates: "{{ pycharm_install_prefix }}/pycharm-{{ pycharm_version }}"
+      copy: false
+  when: not pycharm_install_dir.stat.exists
+
+- name: Delete PyCharm download.
+  file:
+    path: "{{ pycharm_download_path }}/{{ pycharm_download_archive }}"
+    state: absent
+  when: not pycharm_download_keep

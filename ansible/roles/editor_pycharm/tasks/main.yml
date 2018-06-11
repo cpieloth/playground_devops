@@ -1,0 +1,6 @@
+---
+- block:
+  - import_tasks: check_pycharm.yml
+  - import_tasks: install_pycharm.yml
+    when: not ansible_check_mode
+    become: yes

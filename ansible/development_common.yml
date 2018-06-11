@@ -1,0 +1,7 @@
+---
+# Playbook for a common development workstation.
+- hosts: 127.0.0.1
+  connection: local
+  roles:
+    - development_common
+    - editor_atom

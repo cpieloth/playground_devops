@@ -1,0 +1,6 @@
+---
+- block:
+  - import_tasks: check_intellij.yml
+  - import_tasks: install_intellij.yml
+    when: not ansible_check_mode
+    become: yes

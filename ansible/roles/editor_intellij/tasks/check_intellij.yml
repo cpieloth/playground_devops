@@ -1,0 +1,10 @@
+---
+# Check IntelliJ installation directory (check_mode indicator).
+- name: Check IntelliJ installation directory.
+  file:
+    path: "{{ intellij_install_directory }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  when: ansible_check_mode

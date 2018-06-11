@@ -1,0 +1,6 @@
+---
+- import_tasks: install_build_automation.yml
+- import_tasks: install_code_analysis.yml
+- import_tasks: install_compiler.yml
+- import_tasks: install_documentation.yml
+- import_tasks: install_test.yml

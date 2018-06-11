@@ -1,0 +1,4 @@
+---
+- import_tasks: install_markup.yml
+- import_tasks: install_misc.yml
+- import_tasks: install_vcs.yml

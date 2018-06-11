@@ -1,0 +1,49 @@
+---
+# Install the Eclipse CPP IDE.
+- name: Get Eclipse CPP installation directory status.
+  stat: path="{{ eclipse_cpp_install_directory }}"
+  register: eclipse_cpp_install_dir
+
+- name: Download Eclipse CPP.
+  block:
+  - name: Create Eclipse CPP download path.
+    file:
+      path: "{{ eclipse_cpp_download_path }}"
+      state: directory
+      owner: root
+      group: root
+      mode: 0755
+  - name: Download Eclipse CPP.
+    get_url:
+      url: "{{ eclipse_cpp_download_base_url }}{{ eclipse_cpp_download_file }}"
+      dest: "{{ eclipse_cpp_download_path }}/{{ eclipse_cpp_download_file }}"
+      owner: root
+      group: root
+      mode: 0644
+  - name: Get Eclipse CPP download status.
+    stat: path="{{ eclipse_cpp_download_path }}/{{ eclipse_cpp_download_file }}"
+    register: eclipse_cpp_download
+  when: not eclipse_cpp_install_dir.stat.exists
+
+- name: Install Eclipse CPP.
+  block:
+  - name: Create Eclipse CPP installation prefix directory.
+    file:
+        path: "{{ eclipse_cpp_install_directory }}"
+        state: directory
+        owner: root
+        group: root
+        mode: 0755
+  - name: Extract Eclipse CPP.
+    unarchive:
+      src: "{{ eclipse_cpp_download_path }}/{{ eclipse_cpp_download_file }}"
+      dest: "{{ eclipse_cpp_install_directory }}"
+      extra_opts: [--strip-components=1]
+      copy: false
+  when: not eclipse_cpp_install_dir.stat.exists
+
+- name: Delete Eclipse CPP download.
+  file:
+    path: "{{ eclipse_cpp_download_path }}/{{ eclipse_cpp_download_file }}"
+    state: absent
+  when: not eclipse_cpp_download_keep

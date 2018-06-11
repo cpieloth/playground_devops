@@ -1,0 +1,8 @@
+---
+- name: Install compiler for C/C++ development.
+  become: yes
+  apt: name={{ item }} state=present
+  with_items:
+    - clang
+    - gcc
+    - g++
