@@ -1,0 +1,16 @@
+---
+# Install Microsoft's Visual Studio Code Editor.
+
+- name: Add signing key 'https://packages.microsoft.com/keys/microsoft.asc'.
+  apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
+  become: yes
+
+- name: Add repository 'https://packages.microsoft.com/repos/vscode stable main'.
+  apt_repository: repo='deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main'
+  become: yes
+
+- name: Install Visual Studio Code editor.
+  apt: name=code state=present update_cache=yes
+  become: yes
