@@ -1,6 +1,6 @@
 ---
-eclipse_cpp_download_base_url: http://ftp.fau.de/eclipse/technology/epp/downloads/release/oxygen/3a/
-eclipse_cpp_download_file: eclipse-cpp-oxygen-3a-linux-gtk-x86_64.tar.gz
+eclipse_cpp_download_base_url: http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/photon/R/
+eclipse_cpp_download_file: eclipse-cpp-photon-R-linux-gtk-x86_64.tar.gz
 eclipse_cpp_install_prefix: /opt/apps
 eclipse_cpp_download_path: /tmp/ansible/editor
 eclipse_cpp_download_keep: false
