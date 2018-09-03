@@ -6,4 +6,3 @@
     - gitk
     - mercurial
     - hgview
-  become: yes

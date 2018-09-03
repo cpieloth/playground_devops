@@ -4,4 +4,3 @@
   with_items:
     - asciidoc
     - markdown
-  become: yes

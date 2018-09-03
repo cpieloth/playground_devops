@@ -6,4 +6,3 @@
     - meld
     - screen
     - vim
-  become: yes

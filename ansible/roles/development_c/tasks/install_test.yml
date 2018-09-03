@@ -1,6 +1,5 @@
 ---
 - name: Install testing tools for C/C++.
-  become: yes
   package: name={{ item }} state=present
   with_items:
     - check

@@ -1,21 +1,21 @@
 ---
-- import_tasks: install_build_automation.yml
+- block:
+  - import_tasks: install_build_automation.yml
+    tags:
+      - development_c_build_automation
+  - import_tasks: install_code_analysis.yml
+    tags:
+      - development_c_code_analysis
+  - import_tasks: install_compiler.yml
+    tags:
+      - development_c_compiler
+  - import_tasks: install_documentation.yml
+    tags:
+      - development_c_documentation
+  - import_tasks: install_test.yml
+    tags:
+      - development_c_test
+
+  become: yes
   tags:
-    - development_c_build_automation
-    - development_c
-- import_tasks: install_code_analysis.yml
-  tags:
-    - development_c_code_analysis
-    - development_c
-- import_tasks: install_compiler.yml
-  tags:
-    - development_c_compiler
-    - development_c
-- import_tasks: install_documentation.yml
-  tags:
-    - development_c_documentation
-    - development_c
-- import_tasks: install_test.yml
-  tags:
-    - development_c_test
     - development_c

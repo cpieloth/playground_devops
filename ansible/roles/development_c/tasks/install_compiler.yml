@@ -1,6 +1,5 @@
 ---
 - name: Install compiler for C/C++ development.
-  become: yes
   package: name={{ item }} state=present
   with_items:
     - clang

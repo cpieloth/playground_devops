@@ -1,13 +1,15 @@
 ---
-- import_tasks: install_markup.yml
+- block:
+  - import_tasks: install_markup.yml
+    tags:
+      - development_common_markup
+  - import_tasks: install_misc.yml
+    tags:
+      - development_common_misc
+  - import_tasks: install_vcs.yml
+    tags:
+      - development_common_vcs
+
+  become: yes
   tags:
-    - development_common_markup
-    - development_common
-- import_tasks: install_misc.yml
-  tags:
-    - development_common_misc
-    - development_common
-- import_tasks: install_vcs.yml
-  tags:
-    - development_common_vcs
     - development_common
