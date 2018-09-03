@@ -4,4 +4,3 @@
   connection: local
   roles:
     - development_common
-    - editor_atom

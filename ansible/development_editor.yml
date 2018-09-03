@@ -1,0 +1,10 @@
+---
+# Install editors and IDEs.
+- hosts: 127.0.0.1
+  connection: local
+  roles:
+    - editor_atom
+    - editor_eclipse-cpp
+    - editor_intellij
+    - editor_pycharm
+    - editor_vscode
