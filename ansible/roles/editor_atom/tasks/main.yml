@@ -5,7 +5,7 @@
     apt_repository: repo='ppa:webupd8team/atom'
 
   - name: Install Atom editor.
-    apt: name=atom state=present
+    package: name=atom state=present
 
   tags:
     - editor_atom_install

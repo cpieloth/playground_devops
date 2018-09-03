@@ -12,7 +12,7 @@
     become: yes
 
   - name: Install Visual Studio Code editor.
-    apt: name=code state=present update_cache=yes
+    package: name=code state=present
   
   become: yes
   tags:
