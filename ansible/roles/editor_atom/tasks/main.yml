@@ -1,10 +1,13 @@
 ---
 # Install GitHub's Atom Editor.
+- block:
+  - name: Add repository 'ppa:webupd8team/atom'.
+    apt_repository: repo='ppa:webupd8team/atom'
 
-- name: Add repository 'ppa:webupd8team/atom'.
-  apt_repository: repo='ppa:webupd8team/atom'
-  become: yes
+  - name: Install Atom editor.
+    apt: name=atom state=present
 
-- name: Install Atom editor.
-  apt: name=atom state=present
+  tags:
+    - editor_atom_install
+    - editor_atom
   become: yes

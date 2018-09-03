@@ -1,6 +1,11 @@
 ---
-- block:
-  - import_tasks: check_intellij.yml
-  - import_tasks: install_intellij.yml
-    when: not ansible_check_mode
-    become: yes
+- import_tasks: check_intellij.yml
+  tags:
+    - editor_intellij_check
+    - editor_intellij
+- import_tasks: install_intellij.yml
+  when: not ansible_check_mode
+  become: yes
+  tags:
+    - editor_intellij_install
+    - editor_intellij

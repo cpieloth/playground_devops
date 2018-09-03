@@ -1,3 +1,9 @@
 ---
 - import_tasks: install_java.yml
+  tags:
+    - development_java_jdk
+    - development_java
 - import_tasks: install_build_automation.yml
+  tags:
+    - development_java_build_automation
+    - development_java

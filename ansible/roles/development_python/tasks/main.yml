@@ -10,4 +10,7 @@
   - name: Install virtualenv.
     pip: name=virtualenv executable=pip3
 
+  tags:
+    - development_python_install
+    - development_python
   become: yes

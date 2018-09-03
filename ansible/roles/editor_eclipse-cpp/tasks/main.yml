@@ -1,6 +1,11 @@
 ---
-- block:
-  - import_tasks: check_eclipse-cpp.yml
-  - import_tasks: install_eclipse-cpp.yml
-    when: not ansible_check_mode
-    become: yes
+- import_tasks: check_eclipse-cpp.yml
+  tags:
+    - editor_eclipse-cpp_check
+    - editor_eclipse-cpp
+- import_tasks: install_eclipse-cpp.yml
+  when: not ansible_check_mode
+  become: yes
+  tags:
+  - editor_eclipse-cpp_install
+  - editor_eclipse-cpp
