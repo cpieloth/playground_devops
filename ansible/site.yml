@@ -1,5 +1,6 @@
 ---
 - import_playbook: development_common.yml
 - import_playbook: development_c.yml
+- import_playbook: development_editor.yml
 - import_playbook: development_java.yml
 - import_playbook: development_python.yml
