@@ -1,5 +1,5 @@
 ---
-intellij_version: 2018.2.1
+intellij_version: 2018.3.3
 intellij_edition: community
 intellij_install_prefix: /opt/apps
 intellij_download_path: /tmp/ansible/editor

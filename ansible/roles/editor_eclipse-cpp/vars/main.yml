@@ -1,2 +1,0 @@
----
-eclipse_cpp_install_directory: "{{ eclipse_cpp_install_prefix }}/eclipse-cpp-photon"
